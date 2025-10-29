@@ -1,5 +1,0 @@
-C:/Users/Roder/stereo_match/cuda/CMakeFiles/stereo_cuda_kernels.dir
-C:/Users/Roder/stereo_match/cuda/CMakeFiles/vector_add_test.dir
-C:/Users/Roder/stereo_match/cuda/CMakeFiles/vecadd_shared.dir
-C:/Users/Roder/stereo_match/cuda/CMakeFiles/ALL_BUILD.dir
-C:/Users/Roder/stereo_match/cuda/CMakeFiles/ZERO_CHECK.dir

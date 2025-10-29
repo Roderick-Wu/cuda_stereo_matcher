@@ -11,6 +11,7 @@ Usage:
   python cuda/demo.py
 """
 import sys
+import os
 import ctypes
 import platform
 from pathlib import Path
@@ -18,21 +19,37 @@ import numpy as np
 
 
 def find_library_path():
-    root = Path(__file__).resolve().parent
-    # expected build output path
-    candidates = []
-    build_dir = root / "build" / "cmake-build"
-    if platform.system() == "Windows":
-        candidates.append(build_dir / "Release" / "vecadd_shared.dll")
-        candidates.append(build_dir / "Debug" / "vecadd_shared.dll")
-    else:
-        candidates.append(build_dir / "libvecadd_shared.so")
-        candidates.append(build_dir / "libvecadd_shared.dylib")
+    # Allow an environment override for custom layouts
+    env_override = os.environ.get('VECADD_LIB_PATH')
+    if env_override:
+        p = Path(env_override)
+        if p.exists():
+            return p
+        raise FileNotFoundError(f"VECADD_LIB_PATH is set to {p} but that file does not exist")
 
+    root = Path(__file__).resolve().parent
+    # Check both the repo-root build location and the cuda/ subdir build location
+    build_dirs = [root / "build" / "cmake-build", root / "cuda" / "build" / "cmake-build"]
+
+    candidates = []
+    for build_dir in build_dirs:
+        if platform.system() == "Windows":
+            candidates.append(build_dir / "Release" / "vecadd_shared.dll")
+            candidates.append(build_dir / "Debug" / "vecadd_shared.dll")
+        else:
+            candidates.append(build_dir / "libvecadd_shared.so")
+            candidates.append(build_dir / "libvecadd_shared.dylib")
+
+    tried = []
     for c in candidates:
+        tried.append(str(c))
         if c.exists():
             return c
-    raise FileNotFoundError(f"Could not find vecadd_shared library in {build_dir}. Build it first.")
+
+    raise FileNotFoundError(
+        "Could not find vecadd_shared library. Checked the following paths:\n" +
+        "\n".join(tried) +
+        "\nBuild the library first (see cuda/README.md) or set VECADD_LIB_PATH to the exact library path." )
 
 
 def main():
