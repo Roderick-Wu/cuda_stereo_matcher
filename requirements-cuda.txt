@@ -1,0 +1,3 @@
+# Optional packages useful when writing GPU-accelerated code and Python bindings
+torch>=1.8.0  # optional: for torch.cuda extensions if you plan to integrate with PyTorch
+numpy

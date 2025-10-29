@@ -1,0 +1,82 @@
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# JetBrains IDEs
+.idea/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+*.egg
+
+# pytest
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# CMake
+/CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+/cmake-build-*/
+
+# Generic build artifacts
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.lib
+*.a
+*.exp
+*.ilk
+*.pdb
+*.idb
+*.ipdb
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.opendb
+*.VC.db
+*.vcxproj.user
+
+# MSBuild
+bin/
+obj/
+
+# CUDA / nvcc intermediate files
+tmpxft_* 
+nvvm_*.out
+*.cubin
+*.ptx
+
+cuda/build/cmake-build/
+cuda/build/cmake-build/*
+
+*.log
+*.local
+
+*.swp
+*.swo
+# Mac / Thumbs
+.Spotlight-V100
+.Trashes
