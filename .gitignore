@@ -5,8 +5,6 @@ desktop.ini
 # JetBrains IDEs
 .idea/
 
-*.png
-
 # Virtual environments
 venv/
 env/
@@ -74,7 +72,6 @@ nvvm_*.out
 cuda/build/cmake-build/
 cuda/build/cmake-build/*
 
-*.tlog
 *.log
 *.local
 
